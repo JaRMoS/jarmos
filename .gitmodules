@@ -1,0 +1,12 @@
+[submodule "JKerMor"]
+	path = JKerMor
+	url = ../JKerMor
+[submodule "JRB"]
+	path = JRB
+	url = ../JRB
+[submodule "JaRMoSBase"]
+	path = JaRMoSBase
+	url = ../JaRMoSBase
+[submodule "JaRMoSA"]
+	path = JaRMoSA
+	url = ../JaRMoSA
