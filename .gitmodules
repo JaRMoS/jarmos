@@ -12,7 +12,7 @@
 	url = ../JaRMoSA
 [submodule "JaRMoSModels"]
 	path = JaRMoSModels
-	url = ./JaRMoSModels/
+	url = ../JaRMoSModels/
 [submodule "JaRMoSPC"]
 	path = JaRMoSPC
-	url = ./JaRMoSPC
+	url = ../JaRMoSPC
