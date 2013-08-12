@@ -4,6 +4,10 @@
  * 
  * @section dl_link Direct file download
  * 
+ * The current @ref jarmosa Android APK can be downloaded <a href="http://www.morepas.org/software/jarmos/JaRMoS.apk">here</a>.
+ * 
+ * The JAR file for @ref jarmospc is available <a href="http://www.morepas.org/software/jarmos/jarmospc.jar">here</a>.
+ * 
  * @section dl_git GIT repository (Source code only)
  * 
  * The probably easiest way to obtain all of JaRMoS is to use the global GIT repository
