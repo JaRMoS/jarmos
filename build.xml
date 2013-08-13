@@ -14,19 +14,61 @@
 
 <project name="JaRMoS" default="all" basedir=".">
 
-	<!-- some version information -->
-	<property name="jarmos.version" value="1.0" />
+	<!-- 
+		Extra commands (<if> etc) via ant-contrib 
+		http://sourceforge.net/projects/ant-contrib/
+	-->
+	<taskdef resource="net/sf/antcontrib/antcontrib.properties">
+		<classpath>
+			<pathelement location="lib/ant-contrib-1.0b3.jar" />
+		</classpath>
+	</taskdef>
 
-	<!-- Set the properties for source directories -->
-	<property name="bin.doxygen" value="doxygen" />
-	<property name="dir.docs" value="docs/html" />
+	<!-- some version information -->
+	<property name="jarmos.version" value="1.1" />
+	<property name="jarmos.version.placeholder" value="!JARMOSA_VERSION!" />
+
 	<property name="dir.jarmosa" value="JaRMoSA" />
+	<property name="jarmos.zip" value="JaRMoS-${jarmos.version}.zip" />
+	<property name="jarmos.tar.gz" value="JaRMoS-${jarmos.version}.tar.gz" />
 	<property name="jarmosbase.dir" value="JaRMoSBase" />
-	<property name="jarmospc.dir" value="JaRMoSPC" />
-	<property name="jarmosa.dir" value="JaRMoSA" />
-	<property name="jarmospc.jar" value="${jarmospc.dir}/build/JaRMoSPC-${jarmos.version}.jar" />
+	<property name="jarmosbase.jar" value="${jarmosbase.dir}/JaRMoSBase-${jarmos.version}.jar" />
 	<property name="jkermor.dir" value="JKerMor" />
+	<property name="jkermor.jar" value="${jkermor.dir}/JKerMor-${jarmos.version}.jar" />
 	<property name="jrb.dir" value="JRB" />
+	<property name="jrb.jar" value="${jrb.dir}/JRB-${jarmos.version}.jar" />
+	<property name="jarmosmodels.dir" value="JaRMoSModels" />
+	<property name="jarmos.models.zip" value="JaRMoSModels-${jarmos.version}.zip" />
+
+	<property name="jarmospc.dir" value="JaRMoSPC" />
+	<property name="jarmospc.jar" value="${jarmospc.dir}/build/JaRMoSPC-${jarmos.version}.jar" />
+	<property name="jarmospc.zip" value="JaRMoSPC-${jarmos.version}-all.zip" />
+	<property name="jarmospc.zip.src" value="${jarmospc.dir}/build/${jarmospc.zip}" />
+
+	<property name="jarmosa.dir" value="JaRMoSA" />
+	<property name="jarmosa.apk" value="JaRMoSA-${jarmos.version}.apk" />
+	<property name="jarmosa.apk.src" value="${dir.jarmosa}/bin/JaRMoSA-release.apk" />
+	<!-- When building with eclipse, the output apk name is different (relevant for target "docs" only) -->
+	<property name="jarmosa.apk.src.eclipse" value="${dir.jarmosa}/bin/JaRMoSA.apk" />
+
+	<property name="bin.doxygen" value="doxygen" />
+	<property name="dir.docs" value="docs" />
+	<property name="doxy.conf.template" value="${dir.docs}/doxyfile.in" />
+	<property name="doxy.conf.tmp" value="${dir.docs}/doxyfile" />
+	<property name="dir.docs.htmlout" value="${dir.docs}/html" />
+	<property name="warnings.log" value="${dir.docs}/warnings.log" />
+	<property name="warnings.log.placeholder" value="!WARNINGS_LOG!" />
+
+	<property name="url.docs" value="http://www.morepas.org/software/jarmos" />
+	<property name="url.jarmos.zip.placeholder" value="!JARMOS_SRC_ZIP!" />
+	<property name="url.jarmos.tar.gz.placeholder" value="!JARMOS_SRC_TAR!" />
+	<property name="url.jarmos.models.zip.placeholder" value="!JARMOS_MODELS_ZIP!" />
+	<!-- ${url.docs}/ -->
+	<property name="url.jarmospc.zip" value="${jarmospc.zip}" />
+	<property name="url.jarmospc.zip.placeholder" value="!JARMOSPC_ZIP!" />
+	<!-- ${url.docs}/ -->
+	<property name="url.jarmosa.apk" value="${jarmosa.apk}" />
+	<property name="url.jarmosa.apk.placeholder" value="!JARMOSA_APK!" />
 
 	<fileset id="junit" dir="lib">
 		<include name="junit.jar" />
@@ -56,8 +98,58 @@
 		<include name="commons-math-2.2.jar" />
 	</fileset>
 
-	<target name="all" depends="jarmospc, jarmosa">
+	<target name="all" depends="jarmospc, jarmosa, docs, src">
 
+	</target>
+
+	<patternset id="non.sources">
+		<exclude name="bin/" />
+		<exclude name=".*/" />
+		<exclude name=".gitignore" />
+		<!--<exclude name=".classpath" />-->
+		<exclude name="*.jar" />
+	</patternset>
+
+	<target name="src">
+		<zip destfile="${jarmos.zip}">
+			<zipfileset dir="${jarmosbase.dir}" prefix="${jarmosbase.dir}">
+				<patternset refid="non.sources" />
+			</zipfileset>
+			<zipfileset dir="${jkermor.dir}" prefix="${jkermor.dir}">
+				<patternset refid="non.sources" />
+			</zipfileset>
+			<zipfileset dir="${jrb.dir}" prefix="${jrb.dir}">
+				<patternset refid="non.sources" />
+			</zipfileset>
+			<zipfileset dir="${jarmospc.dir}" prefix="${jarmospc.dir}">
+				<patternset refid="non.sources" />
+				<exclude name="build/" />
+			</zipfileset>
+			<zipfileset dir="${jarmosa.dir}" prefix="${jarmosa.dir}">
+				<patternset refid="non.sources" />
+				<exclude name="libs/" />
+			</zipfileset>
+		</zip>
+		<zip destfile="${jarmos.models.zip}" basedir="${jarmosmodels.dir}" />
+		<tar destfile="${jarmos.tar.gz}" compression="gzip">
+			<tarfileset dir="${jarmosbase.dir}" prefix="${jarmosbase.dir}">
+				<patternset refid="non.sources" />
+			</tarfileset>
+			<tarfileset dir="${jkermor.dir}" prefix="${jkermor.dir}">
+				<patternset refid="non.sources" />
+			</tarfileset>
+			<tarfileset dir="${jrb.dir}" prefix="${jrb.dir}">
+				<patternset refid="non.sources" />
+			</tarfileset>
+			<tarfileset dir="${jarmospc.dir}" prefix="${jarmospc.dir}">
+				<patternset refid="non.sources" />
+				<exclude name="build/" />
+			</tarfileset>
+			<tarfileset dir="${jarmosa.dir}" prefix="${jarmosa.dir}">
+				<patternset refid="non.sources" />
+				<exclude name="libs/" />
+			</tarfileset>
+		</tar>
 	</target>
 
 	<target name="jarmosbase" description="JaRMoS Base">
@@ -69,6 +161,9 @@
 				<fileset refid="junit" />
 			</classpath>
 		</javac>
+		<jar destfile="${jarmosbase.jar}">
+			<fileset dir="${jarmosbase.dir}/bin" />
+		</jar>
 	</target>
 
 	<target name="jkermor" depends="jarmosbase" description="JKerMor">
@@ -82,6 +177,9 @@
 				<fileset refid="junit" />
 			</classpath>
 		</javac>
+		<jar destfile="${jkermor.jar}">
+			<fileset dir="${jkermor.dir}/bin" />
+		</jar>
 	</target>
 
 	<target name="jrb" depends="jarmosbase" description="JRB">
@@ -94,6 +192,9 @@
 				<fileset refid="junit" />
 			</classpath>
 		</javac>
+		<jar destfile="${jrb.jar}">
+			<fileset dir="${jrb.dir}/bin" />
+		</jar>
 	</target>
 
 	<target name="jarmospc" depends="jkermor,jrb,jarmosbase" description="JaRMoS PC">
@@ -126,28 +227,93 @@
 			<fileset refid="jkermorjars" />
 			<fileset refid="jarmospcjars" />
 		</copy>
-		<zip destfile="${jarmospc.dir}/build/JaRMoSPC-${jarmos.version}-all.zip">
+		<zip destfile="${jarmospc.zip.src}">
 			<path path="${jarmospc.jar}" />
 			<zipfileset dir="${jarmospc.dir}/build/lib" prefix="lib" />
 		</zip>
 	</target>
 
 	<!-- Android App build. 
-		For more information see e.g. http://www.androidengineer.com/2010/06/using-ant-to-automate-building-android.html
+		For more information see e.g. 
+		http://www.androidengineer.com/2010/06/using-ant-to-automate-building-android.html
 		or the build.xml in the sdk_dir/tools/ant/build.xml
 	-->
 	<target name="jarmosa" depends="jkermor,jrb,jarmosbase" description="JaRMoS App">
+		<delete>
+			<fileset dir="${jarmosa.dir}/libs" includes="*.jar" />
+		</delete>
+		<copy todir="${jarmosa.dir}/libs" flatten="true">
+			<fileset refid="jarmosbasejars" />
+			<fileset refid="jkermorjars" />
+			<fileset dir="${jarmosa.dir}">
+				<include name="lib/achartengine-0.6.0.r140-1.5.jar" />
+			</fileset>
+			<fileset dir=".">
+				<include name="${jarmosbase.jar}" />
+				<include name="${jkermor.jar}" />
+				<include name="${jrb.jar}" />
+			</fileset>
+		</copy>
 		<subant target="release" buildpath="${jarmosa.dir}">
 			<property name="basedir" value="${jarmosa.dir}" />
 		</subant>
+		<delete>
+			<fileset dir="${jarmosa.dir}/libs" includes="*.jar" />
+		</delete>
+		<!--<move file="${jarmosa.apk.src}" tofile="${jarmosa.apk}" />-->
 	</target>
 
 	<!-- Builds the JaRMoS documentation -->
-	<target name="docs">
+	<target name="docs" depends="src" description="JaRMoS Documentation (via doxygen)">
+		<copy file="${doxy.conf.template}" tofile="${doxy.conf.tmp}" />
+		<replace file="${doxy.conf.tmp}">
+			<replacefilter token="${jarmos.version.placeholder}" value="${jarmos.version}" />
+			<replacefilter token="${warnings.log.placeholder}" value="${warnings.log}" />
+		</replace>
 		<exec dir="." executable="${bin.doxygen}" failonerror="true">
-			<arg line=" doxyfile" />
+			<arg line=" ${doxy.conf.tmp}" />
 		</exec>
-		<copy file="${dir.jarmosa}/bin/JaRMoSA.apk" todir="${dir.docs}" />
+		<delete file="${doxy.conf.tmp}" />
+		<replace dir="${dir.docs.htmlout}">
+			<!--<include name="**/*.html" />-->
+			<include name="**/jarmos_*.html" />
+			<replacefilter token="${jarmos.version.placeholder}" value="${jarmos.version}" />
+			<replacefilter token="${url.jarmosa.apk.placeholder}" value="${url.jarmosa.apk}" />
+			<replacefilter token="${url.jarmospc.zip.placeholder}" value="${url.jarmospc.zip}" />
+			<replacefilter token="${url.jarmos.zip.placeholder}" value="${jarmos.zip}" />
+			<replacefilter token="${url.jarmos.tar.gz.placeholder}" value="${jarmos.tar.gz}" />
+			<replacefilter token="${url.jarmos.models.zip.placeholder}" value="${jarmos.models.zip}" />
+		</replace>
+		<!-- Will only work if jarmosa, jarmospc have been built.
+		     However, we want the docs to be able to build without having to build the other two before. -->
+		<if>
+			<available file="${jarmosa.apk.src}" />
+			<then>
+				<copy file="${jarmosa.apk.src}" tofile="${dir.docs.htmlout}/${jarmosa.apk}" />
+			</then>
+			<elseif>
+				<available file="${jarmosa.apk.src.eclipse}" />
+				<then>
+					<copy file="${jarmosa.apk.src.eclipse}" tofile="${dir.docs.htmlout}/${jarmosa.apk}" />
+				</then>
+			</elseif>
+		</if>
+		<if>
+			<available file="${jarmospc.zip.src}" />
+			<then>
+				<copy file="${jarmospc.zip.src}" todir="${dir.docs.htmlout}" />
+			</then>
+		</if>
+		<copy file="${jarmos.zip}" todir="${dir.docs.htmlout}" />
+		<copy file="${jarmos.tar.gz}" todir="${dir.docs.htmlout}" />
+		<copy file="${jarmos.models.zip}" todir="${dir.docs.htmlout}" />
+		<echo message="Documentation generation finished. Open ${dir.docs}/index.html to see the documentation." />
+		<if>
+			<available file="${warnings.log}" />
+			<then>
+				<echo message="Doxygen generated warnings. See ${warnings.log} for details." />
+			</then>
+		</if>
 	</target>
 
 </project>

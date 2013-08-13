@@ -8,7 +8,7 @@
  * In order to simply get started, check out the following pages in that order:
  * - \subpage jarmos_download
  * - \subpage jarmos_setup
- * - \subpage jarmos_models
+ * - \subpage jarmos_ownmodels
  * 
  * If you want to extend JaRMoS or include own models, it will be helpful to understand the overall structure.
  * The framework is separated into the following modules:
@@ -36,3 +36,12 @@
  * <http://www.gnu.org/licenses/>
  * 
  */
+
+/**
+ * @defgroup jarmosmodels JaRMoS Models
+ * @short Precomputed models available for simulation with JaRMoS
+ * 
+ * This module is merely a collection of models that have been previously computed and are available for simulation using JaRMoS.
+ * 
+ * See \ref jarmos_models and \ref jarmos_ownmodels for more information.
+ */ 

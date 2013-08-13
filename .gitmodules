@@ -16,3 +16,6 @@
 [submodule "JaRMoSPC"]
 	path = JaRMoSPC
 	url = ../JaRMoSPC
+[submodule "matlabtojarmos"]
+	path = matlabtojarmos
+	url = ../../matlab/matlabtojarmos.git/
