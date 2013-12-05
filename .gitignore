@@ -1,5 +1,3 @@
 docs/html
 docs/*.log
-JaRMoS*.jar
-JaRMoS*.tar.gz
-JaRMoS*.zip
+build/

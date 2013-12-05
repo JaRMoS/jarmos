@@ -55,8 +55,11 @@
  * @subsection jarmospc_bin JaRMoSPC
  * 
  * The \ref jarmospc binaries come as a \c .zip file containing the main \c .jar package and all required libraries in the folder \c lib/.
- * Extract the archive to a location of your choice, enter the folder using a terminal or \c cmd (Windows) and run
- * \code java -cp libs/* -jar JaRMoSPC-<version>.jar [<model_folder>] \endcode
+ * Extract the archive to a location of your choice and run the jar-File by e.g. double click.
+ * 
+ * From command line, enter the folder using a terminal or \c cmd (Windows) and run
+ * \code java -jar JaRMoSPC-<version>.jar [<model_folder>] \endcode
+ * in order to start JaRMoSPC using the specified model folder.
  *  
  * Note that \c Java needs to be available on your \c PATH. If you omit the <tt><model_folder></tt> argument, a default directory selection dialog will prompt
  * you to select a model directory (See \ref jarmos_models).
@@ -99,6 +102,8 @@
  * \li \b jarmosa: Builds the \ref jarmosa APK in \c JaRMoSA/bin/
  * \li \b jarmospc: Creates a \ref jarmospc \c .zip file containing <tt>JaRMoSPC-<version>.jar</tt> and dependencies
  * \li \b docs: Creates the documentation. Can be run without previously running any other target, however, compiling \b jarmosa and \b jarmospc will have it correctly including the download files in the documentation.
+ * 
+ * Ant will place all build outputs in a \c build folder at the JaRMoS root directory.
  * 
  * @subsection jarmospc_src JaRMoSPC
  * 
