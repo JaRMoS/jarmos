@@ -9,7 +9,7 @@ body, table, div, p, dl {
 
 h1 {
 	font-size: 170%;
-	color: #1C833E;
+	color: #003366;
 	border-bottom: 2px solid #8BB9E0;
 }
 
@@ -21,14 +21,14 @@ h1.groupheader {
 	font-size: 180%;
 	font-weight: bold;
 	margin: 10px 2px;
-	color: #1C833E;
+	color: #003366;
 }
 
 h2 {
 	font-size: 150%;
 	padding-top: 10px;
 	padding-bottom: 0px;
-	color: #1C833E;
+	color: #003366;
 }
 
 h2.groupheader {
@@ -44,7 +44,7 @@ h2.groupheader {
 
 h3 {
 	font-size: 120%;
-	color: #1C833E;
+	color: #003366;
 	border-bottom: 1px solid #8BB9E0;
 }
 
@@ -1042,21 +1042,21 @@ dl.section dd {
  
 #projectname
 {
-	font: 300% Tahoma, Arial,sans-serif;
+	font: 400% Verdana, Arial,sans-serif;
 	margin: 0px;
-	padding: 2px 0px;
+	padding: 10px 0px;
 }
     
 #projectbrief
 {
-	font: 120% Tahoma, Arial,sans-serif;
-	margin: 0px;
+	font: 200% Verdana, Arial,sans-serif;
+	margin: 10px;
 	padding: 0px;
 }
 
 #projectnumber
 {
-	font: 50% Tahoma, Arial,sans-serif;
+	font: 50% Verdana, Arial,sans-serif;
 	margin: 0px;
 	padding: 0px;
 }
@@ -1067,6 +1067,8 @@ dl.section dd {
 	margin: 0px;
 	width: 100%;
 	border-bottom: 1px solid #5373B4;
+	color: white;
+	background-color: #003366;
 }
 
 .image

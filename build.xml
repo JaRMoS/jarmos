@@ -396,10 +396,13 @@
 			</else>
 		</if>
 		<if>
-			<available file="${jarmospc.zip.src}" />
+			<available file="${dir.build}/${jarmospc.zip.src}" />
 			<then>
-				<copy file="${jarmospc.zip.src}" todir="${dir.docs.htmlout}" />
+				<copy file="${dir.build}/${jarmospc.zip.src}" todir="${dir.docs.htmlout}" />
 			</then>
+			<else>
+				<echo message="No JaRMoSPC zip file copied to HTML output directory! (Download link will be broken. Build JaRMoSPC target first)" level="warning"/>
+			</else>
 		</if>
 		<copy file="${dir.build}/${jarmos.zip}" todir="${dir.docs.htmlout}" />
 		<copy file="${dir.build}/${jarmos.tar.gz}" todir="${dir.docs.htmlout}" />

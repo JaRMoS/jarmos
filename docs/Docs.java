@@ -1,11 +1,23 @@
 /**
- * @mainpage Welcome to the JaRMoS documentation!
+ * @mainpage Welcome to JaRMoS!
  * 
- * The JaRMoS framework enables to import and simulate reduced models from various sources. So far support for rbmatlab,
- * KerMor and rbMIT reduced models is present, where we can only import the rbMIT models that have previously been
- * published with the \ref rbappmit android application.
+ * JaRMoS stands for "Java Reduced Model Simulations" and aims to enable import and simulation of
+ * various reduced models from multiple sources on any java-capable platform.
  * 
- * In order to simply get started, check out the following pages in that order:
+ * So far support for <a href="http://www.morepas.org/software/rbmatlab">rbmatlab</a>,
+ * <a href="http://www.morepas.org/software/kermor">KerMor</a> and
+ * <a href="http://augustine.mit.edu/methodology/methodology_rbAPPmit_Client_Software.htm">rbMIT</a>
+ * reduced models is present, where we can only import the rbMIT models that have previously been
+ * published with the \ref rbappmit Android application.
+ * 
+ * @attention
+ * This software framework was born out of the \ref rbappmit Android application developed at MIT by Phuong Huynh and David Knezevic.
+ * Since then, most of the code has been restructured and -packaged, cleaned up and extended to the current collection of java projects.
+ * However, the core part of \ref jrb is still closely related to the original sources and the authors of JaRMoS claim no copyright and publish
+ * those parts under the same license conditions as stated at the original website http://augustine.mit.edu/methodology/methodology_rbAPPmit_Client_Software.htm.  
+ * Also check out http://augustine.mit.edu/methodology.htm for more background and the current project status.
+ * 
+ * In order to simply get started, check out the following pages:
  * - \subpage jarmos_download
  * - \subpage jarmos_setup
  * - \subpage jarmos_ownmodels
