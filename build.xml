@@ -325,6 +325,9 @@
 				<include name="${jrb.jar}" />
 			</fileset>
 		</copy>
+		<!-- <subant target="release" buildpath="${jarmosa.dir}">
+			<property name="basedir" value="${jarmosa.dir}" />
+		</subant> -->
 		<subant target="debug" buildpath="${jarmosa.dir}">
 			<property name="basedir" value="${jarmosa.dir}" />
 		</subant>

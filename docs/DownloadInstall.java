@@ -16,7 +16,7 @@
  * 
  * The probably easiest way to obtain all of JaRMoS !JARMOSA_VERSION! source is to use the global GIT repository
  * 
- * @code git clone http://www.ians.uni-stuttgart.de:8080/agh/gitblit/git/software/java/JaRMoS <target_directory> @endcode
+ * @code git clone https://github.com/JaRMoS/jarmos <target_directory> @endcode
  * 
  * Therein, all other modules are contained as submodules. Once the main repository is checked out, simply call
  * 
@@ -27,12 +27,12 @@
  * @code git submodule foreach git checkout master @endcode
  * 
  * Alternatively, each of the modules can be downloaded directly using GIT:
- * @li \ref jarmosbase http://www.ians.uni-stuttgart.de:8080/agh/gitblit/git/software/java/JaRMoSBase
- * @li \ref jarmospc http://www.ians.uni-stuttgart.de:8080/agh/gitblit/git/software/java/JaRMoSPC
- * @li \ref jarmosa http://www.ians.uni-stuttgart.de:8080/agh/gitblit/git/software/java/JaRMoSA
- * @li \ref jkermor http://www.ians.uni-stuttgart.de:8080/agh/gitblit/git/software/java/JKerMor
- * @li \ref jrb http://www.ians.uni-stuttgart.de:8080/agh/gitblit/git/software/java/JRB
- * @li \ref jarmosmodels http://www.ians.uni-stuttgart.de:8080/agh/gitblit/git/software/java/JaRMoSModels
+ * @li \ref jarmosbase https://github.com/JaRMoS/jarmosbase
+ * @li \ref jarmospc https://github.com/JaRMoS/jarmospc
+ * @li \ref jarmosa https://github.com/JaRMoS/jarmosa
+ * @li \ref jkermor https://github.com/KerMor/JKerMor
+ * @li \ref jrb https://github.com/JaRMoS/jrb
+ * @li \ref jarmosmodels https://github.com/JaRMoS/models
  * 
  * \page jarmos_setup JaRMoS installation
  * 
