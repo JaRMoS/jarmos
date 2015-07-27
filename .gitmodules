@@ -1,21 +1,21 @@
 [submodule "JKerMor"]
 	path = JKerMor
-	url = ../JKerMor
+	url = https://github.com/KerMor/JKerMor.git 
 [submodule "JRB"]
 	path = JRB
-	url = ../JRB
+	url = https://github.com/JaRMoS/jrb.git
 [submodule "JaRMoSBase"]
 	path = JaRMoSBase
-	url = ../JaRMoSBase
+	url = https://github.com/JaRMoS/jarmosbase.git
 [submodule "JaRMoSA"]
 	path = JaRMoSA
-	url = ../JaRMoSA
+	url = https://github.com/JaRMoS/jarmosa.git
 [submodule "JaRMoSModels"]
 	path = JaRMoSModels
-	url = ../JaRMoSModels/
+	url = https://github.com/JaRMoS/models.git
 [submodule "JaRMoSPC"]
 	path = JaRMoSPC
-	url = ../JaRMoSPC
+	url = https://github.com/JaRMoS/jarmospc.git
 [submodule "matlabtojarmos"]
 	path = matlabtojarmos
-	url = ../../matlab/matlabtojarmos.git/
+	url = https://github.com/KerMor/matlabtojarmos.git
